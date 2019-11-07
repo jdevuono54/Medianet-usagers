@@ -33,14 +33,14 @@ $router->addRoute("login","/login","medianetapp\control\MedianetController","vie
 $router->addRoute("check_login","/check_login","medianetapp\control\MedianetController","checkLogin",null);
 
 $router->setDefaultRoute('/login');
-/*Routes Search*/
+/*Route : Search*/
 $router->addRoute("search",
     "/search",
     "medianetapp\control\MedianetController",
     "viewSearch",
     null);
 
-/*Routes postSearch*/
+/*Route : post Search*/
 $router->addRoute("to_search",
     "/to_search",
     "medianetapp\control\MedianetController",

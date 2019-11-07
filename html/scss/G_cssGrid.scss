@@ -1,21 +1,85 @@
-.container {
-  display: grid;
+$btnValideColor: #007bff;
+$errorColor: red;
+$gap : 16%;
 
-  grid-template-columns: repeat(12, 1fr);
-  grid-gap: 1.6%;
-
-  @media (min-width: 0px) {
-
-  }
-
-
-  @media (min-width: 992px) {
-
-  }
+.validate_btn {
+  background-color: $btnValideColor;
+  height: 3em;
+  border-radius: 6px;
 }
 
+.container{
+  padding: 1em;
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  margin: 2rem auto 0 auto;
+  max-width: 600px;
+  padding: 1em;
 
+  display: grid;
+}
 
+@media(min-width:1025px) {
+  form{
+    grid-template-rows : repeat(4,1fr);
+    gap:$gap;
+  }
+  #key{
+    display: grid;
+    grid-template-columns : repeat(12,1fr);
+    grid-row: 1/2;
 
+    label{
+      grid-column: 3/6;
+    }
+    input{
+      grid-column: 6/10;
+    }
+  }
+  #type{
+    display: grid;
+    grid-template-columns : repeat(12,1fr);
+    grid-row:2/3;
 
+    label{
+      grid-column: 3/6;
+    }
+    select{
+      grid-column: 6/10;
+    }
+  }
+  #kind{
+    display: grid;
+    grid-template-columns : repeat(12,1fr);
+    grid-row: 3/4;
 
+    label{
+      grid-column: 3/6;
+    }
+    select{
+      grid-column: 6/10;
+    }
+  }
+  #btn{
+    display: grid;
+    grid-template-columns : repeat(12,1fr);
+    grid-row: 4/5;
+
+    input{
+      grid-column: 5/9;
+    }
+  }
+}
+//Tablette
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+  //CSS
+
+}
+
+//Smartphone
+@media (min-width: 320px) and (max-width: 480px) {
+
+  //CSS
+
+}
