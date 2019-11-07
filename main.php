@@ -31,6 +31,7 @@ $router = new router();
 $router->addRoute("catalogue","/catalogue","medianetapp\control\MedianetController","viewCatalogue",1);
 $router->addRoute("login","/login","medianetapp\control\MedianetController","viewLogin",null);
 $router->addRoute("check_login","/check_login","medianetapp\control\MedianetController","checkLogin",null);
+$router->addRoute("document","/document","medianetapp\control\MedianetController","viewDocument",null);
 
 $router->setDefaultRoute('/login');
 /*Routes Search*/
