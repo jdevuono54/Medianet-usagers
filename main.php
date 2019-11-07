@@ -28,7 +28,10 @@ $db->bootEloquent();           /* établir la connexion */
 
 $router = new router();
 
-$router->addRoute("home","/home/","medianetapp\control\MedianetController","viewHome",null);
+$router->addRoute("catalogue","/catalogue","medianetapp\control\MedianetController","viewCatalogue",1);
+$router->addRoute("login","/login","medianetapp\control\MedianetController","viewLogin",null);
+$router->addRoute("check_login","/check_login","medianetapp\control\MedianetController","checkLogin",null);
 
-$router->setDefaultRoute('/home/');
+
+$router->setDefaultRoute('/catalogue');
 $router->run();
