@@ -100,11 +100,6 @@ EQT;
                 </div>";
     }
 
-    /*Method that return search view result*/
-
-    private function renderSearchResult(){
-        echo var_dump($this->data);
-    }
     protected function renderBody($selector=null){
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
@@ -118,9 +113,6 @@ EQT;
                 break;
             case "search":
                 $content=$this->renderSearchForm();
-                break;
-            case "search_result":
-                $content=$this->renderSearchResult();
                 break;
         }
 

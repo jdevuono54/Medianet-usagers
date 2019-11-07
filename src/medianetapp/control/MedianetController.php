@@ -22,14 +22,10 @@ class MedianetController extends \mf\control\AbstractController
 
     public function viewCatalogue(){
         if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER){
-            if(isset($_GET["filtered"])){
-                echo "ok";
-            }
-            else{
-                $lastDocuments = Document::select()->orderBy('id', 'DESC')->limit(6)->get();
-                $vue = new MedianetView($lastDocuments);
-                $vue->render("catalogue");
-            }
+            $lastDocuments = Document::select()->orderBy('id', 'DESC')->limit(6)->get();
+            $vue = new MedianetView($lastDocuments);
+            $vue->render("catalogue");
+
         }
         else{
             Router::executeRoute("login");
@@ -82,7 +78,7 @@ class MedianetController extends \mf\control\AbstractController
                 ->where('id_Kind','=',$_REQUEST["txtKind"])
                 ->get();
             $view = new MedianetView($documents);
-            $view->render("search_result");
+            $view->render("catalogue");
         }
     }
     /* PERMET DE CREE UN MESSAGE D'ERREUR ET D'AFFICHER LES SOURCES DE L'ERREUR */
