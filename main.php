@@ -30,5 +30,26 @@ $router = new router();
 
 $router->addRoute("home","/home/","medianetapp\control\MedianetController","viewHome",null);
 
+/*Routes Search*/
+$router->addRoute("search",
+    "/search",
+    "medianetapp\control\MedianetController",
+    "viewSearch",
+    null);
+
+/*Routes postSearch*/
+$router->addRoute("to_search",
+    "/to_search",
+    "medianetapp\control\MedianetController",
+    "search",
+    null);
+
+/*Routes view search result*/
+$router->addRoute("search_result",
+    "/search_result",
+    "medianetapp\control\MedianetController",
+    "viewSearchResult",
+    null);
+
 $router->setDefaultRoute('/home/');
 $router->run();
