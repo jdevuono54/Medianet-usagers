@@ -4,6 +4,17 @@
   padding: 1em;
 }
 
+.searchLink{
+  background-color: #007bff;
+  height: 2em;
+  text-align: center;
+  text-decoration:none;
+
+  &:hover{
+    background-color: lighten(#007bff,20%);
+  }
+}
+
 
 @media (min-width: 0px) and (max-width: 600px) {
   .catalogue {
@@ -11,6 +22,10 @@
   }
   .document:not(:first-of-type){
     margin-top: 1em;
+  }
+  .searchLink{
+    display: block;
+    margin-bottom: 1em;
   }
 }
 
@@ -22,6 +37,11 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1.6%;
 
+    .searchLink{
+      grid-column: 1/3;
+      justify-self: center;
+      width: 33%;
+    }
   }
 }
 
@@ -33,6 +53,11 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1.6%;
 
+    .searchLink{
+      grid-column: 1/4;
+      justify-self: right;
+      width: 20%;
+    }
   }
 }
 

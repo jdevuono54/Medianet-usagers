@@ -4,6 +4,16 @@
   padding: 1em;
 }
 
+.searchLink {
+  background-color: #007bff;
+  height: 2em;
+  text-align: center;
+  text-decoration: none;
+}
+.searchLink:hover {
+  background-color: #66b0ff;
+}
+
 @media (min-width: 0px) and (max-width: 600px) {
   .catalogue {
     width: 100%;
@@ -11,6 +21,11 @@
 
   .document:not(:first-of-type) {
     margin-top: 1em;
+  }
+
+  .searchLink {
+    display: block;
+    margin-bottom: 1em;
   }
 }
 @media (min-width: 600px) and (max-width: 992px) {
@@ -21,6 +36,11 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1.6%;
   }
+  .catalogue .searchLink {
+    grid-column: 1/3;
+    justify-self: center;
+    width: 33%;
+  }
 }
 @media (min-width: 992px) {
   .catalogue {
@@ -29,6 +49,11 @@
     margin-left: 20%;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1.6%;
+  }
+  .catalogue .searchLink {
+    grid-column: 1/4;
+    justify-self: right;
+    width: 20%;
   }
 }
 

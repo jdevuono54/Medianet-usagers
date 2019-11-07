@@ -29,7 +29,7 @@ class MedianetView extends \mf\view\AbstractView
 
             $blocsDocuments .= <<<EQT
 <div class='document'>
-    <a href="?id=$document->id">
+    <a href="document?id=$document->id">
         <div class='vignette'>
             <img src="${src}/html/img/small/$document->picture">
         </div>
@@ -40,6 +40,7 @@ EQT;
         }
         $html = <<<EQT
             <div class="catalogue">
+                <a href="${src}/main.php/search" class="searchLink">Recherche</a>
                 ${blocsDocuments}
 </div>
 EQT;
