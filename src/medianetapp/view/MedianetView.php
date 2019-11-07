@@ -18,8 +18,45 @@ class MedianetView extends \mf\view\AbstractView
     private function renderFooter(){
         return "";
     }
-    private function renderHome(){
-        return "home";
+    private function renderCatalogue(){
+        $documents = $this->data;
+
+        /*
+         *
+         * MANQUE URL FOR
+         */
+        $blocsDocuments="";
+        foreach ($documents as $document){
+            $blocsDocuments .= "<div class='document'><a href='?id=".$document->id."'>".$document->title."</a></div>
+";
+        }
+        $html = <<<EQT
+            <div class="catalogue">
+                ${blocsDocuments}
+</div>
+EQT;
+        return $html;
+    }
+
+    public function renderLogin(){
+        $error_message = $this->data["error_message"];
+        $html = <<< EQT
+<form method="POST" action="check_login">
+    <div>
+        <label>Adresse mail :</label>
+        <input type="email" name="mail" required>
+    </div>
+    <div>
+        <label>Mot de passe :</label>
+        <input type="password" name="password" required>
+    </div>
+    <div>
+        <input type="submit" value="Connexion">
+        <p class="error_message">${error_message}</p>
+    </div>
+</form>
+EQT;
+        return $html;
     }
 
     /*Function that return the search view body*/
@@ -63,24 +100,19 @@ class MedianetView extends \mf\view\AbstractView
                 </div>";
     }
 
-    /*Method that return search view result*/
-
-    private function renderSearchResult(){
-        echo var_dump($this->data);
-    }
     protected function renderBody($selector=null){
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
 
         switch ($selector){
-            case "home":
-                $content = $this->renderHome();
+            case "catalogue":
+                $content = $this->renderCatalogue();
+                break;
+            case "login":
+                $content = $this->renderLogin();
                 break;
             case "search":
                 $content=$this->renderSearchForm();
-                break;
-            case "search_result":
-                $content=$this->renderSearchResult();
                 break;
         }
 

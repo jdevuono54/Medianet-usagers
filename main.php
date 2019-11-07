@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 use medianetapp\model\User as User;
 use medianetapp\model\Document as Document;
 use medianetapp\model\Borrow as Borrow;
@@ -28,8 +28,11 @@ $db->bootEloquent();           /* établir la connexion */
 
 $router = new router();
 
-$router->addRoute("home","/home/","medianetapp\control\MedianetController","viewHome",null);
+$router->addRoute("catalogue","/catalogue","medianetapp\control\MedianetController","viewCatalogue",1);
+$router->addRoute("login","/login","medianetapp\control\MedianetController","viewLogin",null);
+$router->addRoute("check_login","/check_login","medianetapp\control\MedianetController","checkLogin",null);
 
+$router->setDefaultRoute('/login');
 /*Routes Search*/
 $router->addRoute("search",
     "/search",
@@ -44,12 +47,4 @@ $router->addRoute("to_search",
     "search",
     null);
 
-/*Routes view search result*/
-$router->addRoute("search_result",
-    "/search_result",
-    "medianetapp\control\MedianetController",
-    "viewSearchResult",
-    null);
-
-$router->setDefaultRoute('/home/');
 $router->run();
