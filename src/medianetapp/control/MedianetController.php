@@ -108,7 +108,6 @@ class MedianetController extends \mf\control\AbstractController
 
     public function viewDocument(){
 
-
     if(isset($_GET["reference"])){
 
         $ficheDoc = Document::select()->where("reference", "=", $_GET["reference"])->first();
