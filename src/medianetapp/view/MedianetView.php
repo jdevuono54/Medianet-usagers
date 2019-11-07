@@ -17,7 +17,11 @@ class MedianetView extends \mf\view\AbstractView
         return "";
     }
     private function renderCatalogue(){
-        return "hoghme";
+        $documents = $this->data;
+
+        foreach ($documents as $document){
+            echo $document->title;
+        }
     }
 
     public function renderLogin(){

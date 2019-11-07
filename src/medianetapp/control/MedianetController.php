@@ -7,6 +7,7 @@ use medianetapp\model\User as user;
 use medianetapp\model\Borrow;
 use medianetapp\model\Document;
 use medianetapp\view\MedianetView;
+use mf\auth\Authentification;
 use mf\router\Router;
 use mf\auth\exception\AuthentificationException;
 use medianetapp\auth\MedianetAuthentification;
@@ -18,32 +19,42 @@ class MedianetController extends \mf\control\AbstractController
     }
 
     public function viewCatalogue(){
-        if(isset($_SESSION['access_level']) === MedianetAuthentification::ACCESS_LEVEL_USER){
-            $vue = new MedianetView(null);
+        if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER){
+            $lastDocuments = Document::select()->orderBy('id', 'DESC')->limit(6)->get();
+            $vue = new MedianetView($lastDocuments);
             $vue->render("catalogue");
         }
         else{
+            echo "okxs";
+
             Router::executeRoute("login");
         }
     }
 
     public function viewLogin(){
-        $vue = new MedianetView(null);
-        $vue->render("login");
+        if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER){
+
+            $this->viewCatalogue();
+        }
+        else{
+            $vue = new MedianetView(null);
+            $vue->render("login");
+        }
     }
 
     public function checkLogin(){
-        $auth = new MedianetAuthentification();
+        if(isset($_POST["mail"]) && isset($_POST["password"])){
+            $auth = new MedianetAuthentification();
 
-        try{
-            $auth->loginUser($_POST["mail"],$_POST["password"]);
+            try{
+                $auth->loginUser($_POST["mail"],$_POST["password"]);
 
-            $vue = new MedianetView(null);
-            $vue->render("catalogue");
+                $this->viewCatalogue();
 
-        }catch (AuthentificationException $e){
-            $vue = new MedianetView(["error_message" => $e->getMessage()]);
-            $vue->render("login");
+            }catch (AuthentificationException $e){
+                $vue = new MedianetView(["error_message" => $e->getMessage()]);
+                $vue->render("login");
+            }
         }
     }
 

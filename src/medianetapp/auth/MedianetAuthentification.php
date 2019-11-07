@@ -15,7 +15,7 @@ class MedianetAuthentification extends \mf\auth\Authentification {
     public function loginUser($mail, $password){
         $user = User::where("mail","=",$mail)->first();
         if($user == null){
-            throw new AuthentificationException("L'utilisateur n'existe pas");
+            throw new AuthentificationException("Adresse mail ou mot de passe incorrect");
         }
         else{
             $auth = new Authentification();

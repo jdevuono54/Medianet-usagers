@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 use medianetapp\model\User as User;
 use medianetapp\model\Document as Document;
 use medianetapp\model\Borrow as Borrow;
@@ -33,5 +33,5 @@ $router->addRoute("login","/login","medianetapp\control\MedianetController","vie
 $router->addRoute("check_login","/check_login","medianetapp\control\MedianetController","checkLogin",null);
 
 
-$router->setDefaultRoute('/catalogue');
+$router->setDefaultRoute('/login');
 $router->run();
