@@ -1,0 +1,35 @@
+.document {
+  border: 1px solid black;
+  text-align: center;
+  padding: 1em;
+}
+
+@media (min-width: 0px) and (max-width: 600px) {
+  .catalogue {
+    width: 100%;
+  }
+
+  .document:not(:first-of-type) {
+    margin-top: 1em;
+  }
+}
+@media (min-width: 600px) and (max-width: 992px) {
+  .catalogue {
+    display: grid;
+    width: 60%;
+    margin-left: 20%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.6%;
+  }
+}
+@media (min-width: 992px) {
+  .catalogue {
+    display: grid;
+    width: 60%;
+    margin-left: 20%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.6%;
+  }
+}
+
+/*# sourceMappingURL=G_cssGrid.css.map */

@@ -5,6 +5,7 @@ namespace medianetapp\view;
 use medianetapp\model\Kind;
 use medianetapp\model\Type;
 use mf\router\Router;
+use mf\utils\HttpRequest;
 
 class MedianetView extends \mf\view\AbstractView
 {
@@ -20,15 +21,22 @@ class MedianetView extends \mf\view\AbstractView
     }
     private function renderCatalogue(){
         $documents = $this->data;
-
-        /*
-         *
-         * MANQUE URL FOR
-         */
+        $httpRequet = new HttpRequest();
+        $src = $httpRequet->root;
         $blocsDocuments="";
+
         foreach ($documents as $document){
-            $blocsDocuments .= "<div class='document'><a href='?id=".$document->id."'>".$document->title."</a></div>
-";
+
+            $blocsDocuments .= <<<EQT
+<div class='document'>
+    <a href="?id=$document->id">
+        <div class='vignette'>
+            <img src="${src}/html/img/small/$document->picture">
+        </div>
+        $document->title
+    </a>
+   </div>
+EQT;
         }
         $html = <<<EQT
             <div class="catalogue">
