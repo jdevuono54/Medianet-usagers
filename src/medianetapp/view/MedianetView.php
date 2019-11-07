@@ -50,20 +50,22 @@ EQT;
     public function renderLogin(){
         $error_message = $this->data["error_message"];
         $html = <<< EQT
-<form method="POST" action="check_login">
-    <div>
-        <label>Adresse mail :</label>
-        <input type="email" name="mail" required>
-    </div>
-    <div>
-        <label>Mot de passe :</label>
-        <input type="password" name="password" required>
-    </div>
-    <div>
-        <input type="submit" value="Connexion">
-        <p class="error_message">${error_message}</p>
-    </div>
-</form>
+<div id="login_form">
+    <form method="POST" action="check_login">
+        <div class="mail_login_form">
+            <label>Adresse mail :</label>
+            <input type="email" name="mail" required>
+        </div>
+        <div>
+            <label>Mot de passe :</label>
+            <input type="password" name="password" required>
+        </div>
+        <div>
+            <input type="submit" value="Connexion" class="validate_btn">
+            <p class="error_message">${error_message}</p>
+        </div>
+    </form>
+</div>
 EQT;
         return $html;
     }
