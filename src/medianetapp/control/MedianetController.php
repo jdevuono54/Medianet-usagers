@@ -20,13 +20,16 @@ class MedianetController extends \mf\control\AbstractController
 
     public function viewCatalogue(){
         if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER){
-            $lastDocuments = Document::select()->orderBy('id', 'DESC')->limit(6)->get();
-            $vue = new MedianetView($lastDocuments);
-            $vue->render("catalogue");
+            if(isset($_GET["filtered"])){
+                echo "ok";
+            }
+            else{
+                $lastDocuments = Document::select()->orderBy('id', 'DESC')->limit(6)->get();
+                $vue = new MedianetView($lastDocuments);
+                $vue->render("catalogue");
+            }
         }
         else{
-            echo "okxs";
-
             Router::executeRoute("login");
         }
     }

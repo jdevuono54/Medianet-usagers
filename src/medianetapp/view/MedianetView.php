@@ -19,9 +19,21 @@ class MedianetView extends \mf\view\AbstractView
     private function renderCatalogue(){
         $documents = $this->data;
 
+        /*
+         *
+         * MANQUE URL FOR
+         */
+        $blocsDocuments="";
         foreach ($documents as $document){
-            echo $document->title;
+            $blocsDocuments .= "<div class='document'><a href='?id=".$document->id."'>".$document->title."</a></div>
+";
         }
+        $html = <<<EQT
+            <div class="catalogue">
+                ${blocsDocuments}
+</div>
+EQT;
+        return $html;
     }
 
     public function renderLogin(){
