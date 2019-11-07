@@ -13,6 +13,7 @@ use mf\auth\Authentification;
 use mf\router\Router;
 use mf\auth\exception\AuthentificationException;
 use medianetapp\auth\MedianetAuthentification;
+use Illuminate\Support\Facades\DB;
 
 class MedianetController extends \mf\control\AbstractController
 {
@@ -74,16 +75,17 @@ class MedianetController extends \mf\control\AbstractController
         if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER) {
 
             if (isset($_REQUEST["txtKey"]) && isset($_REQUEST["txtType"]) && isset($_REQUEST["txtKind"])) {
-
+                $idType=$_REQUEST["txtType"];
+                $idKind = $_REQUEST["txtKind"];
                 /*Filtred input*/
                 $filtredKey = filter_var($_REQUEST["txtKey"], FILTER_SANITIZE_STRING);
 
                 /*Get documents*/
-                $documents = Document::where('title', 'like', $filtredKey . '%')
-                    ->orWhere('description', 'like', '%' . $filtredKey . '%')
-                    ->where('id_Type', '=', $_REQUEST["txtType"])
-                    ->where('id_Kind', '=', $_REQUEST["txtKind"])
-                    ->get();
+                $documents=Document::where(function ($query) use ($filtredKey) {
+                    $query->where('title', 'like', '%'.$filtredKey.'%')
+                        ->orWhere('description', 'like','%'.$filtredKey.'%');
+                })
+                    ->where('id_Type', '=',$idType)->where('id_Kind','=',$idKind)->get();
                 $view = new MedianetView($documents);
                 $view->render("catalogue");
             }
