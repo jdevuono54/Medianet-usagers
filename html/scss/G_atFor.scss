@@ -1,0 +1,72 @@
+@mixin cellule($nbCol, $offset, $nbColGrille,$lgGut){
+
+  $lgCol : (100% - ($lgGut * ($nbColGrille+1))) / $nbColGrille;
+
+  width: ($nbCol * $lgCol + ($nbCol - 1) * $lgGut);
+
+  margin-left: $offset * $lgCol + ($offset +1) * $lgGut;
+
+
+  overflow-wrap: break-word;
+  flex-shrink: 0;
+  box-sizing: border-box;
+
+}
+
+@mixin ligne(){
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+}
+
+$btnValideColor: #007bff;
+$errorColor: red;
+
+.error_message{
+  color: $errorColor;
+  width: 100%;
+  text-align: center;
+}
+
+.validate_btn{
+  background-color: $btnValideColor;
+  height: 3em;
+  border-radius: 6px;
+
+  &:hover{
+      background-color: lighten($btnValideColor,10%);
+    }
+}
+
+.nomPage{
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  height: auto;
+  border: 2px solid black;
+  background-color: grey;
+  font-size: 2em;
+}
+
+// POUR TOUT ECRANS
+@media(min-width: 0px){
+
+}
+
+/* TOUT ECRANS PORTRAIT */
+@media (min-width: 0px) and (orientation: portrait){
+
+}
+
+/* TABLETTES PORTRAIT */
+@media (min-width: 0px) and (orientation: portrait) and (max-width: 992px){
+}
+/* TABLETTES PAYSAGE */
+@media (min-width: 0px) and (orientation: landscape) and (max-width: 992px){
+
+}
+
+/*LAPTOP*/
+@media (min-width: 992px){
+
+}
