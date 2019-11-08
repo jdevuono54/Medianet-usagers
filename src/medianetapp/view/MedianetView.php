@@ -14,7 +14,23 @@ class MedianetView extends \mf\view\AbstractView
     }
 
     private function renderHeader(){
-        return "";
+        $httpRequet = new HttpRequest();
+        $src = $httpRequet->root;
+        $router = new Router;
+        $catalogueRoute = $router->urlFor("catalogue");
+
+        $header = <<<EQT
+<div class="logo">
+
+    <a href="$catalogueRoute">
+        
+    </a>
+
+</div>
+
+EQT;
+
+        return $header;
     }
     private function renderFooter(){
         return "Copyright@2019";
