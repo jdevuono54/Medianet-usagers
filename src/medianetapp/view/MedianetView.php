@@ -23,8 +23,9 @@ class MedianetView extends \mf\view\AbstractView
 <div class="logo">
 
     <a href="$catalogueRoute">
-        
+      <img src="${src}/html/img/small/books.png" alt="logo">  
     </a>
+    <h1>Medianet</h1>
 
 </div>
 
@@ -47,7 +48,7 @@ EQT;
 <div class='document'>
     <a href="document?reference=$document->reference">
         <div class='vignette'>
-            <img src="${src}/html/img/small/$document->picture">
+            <img src="${src}/html/img/small/$document->picture" alt="$document->picture">
         </div>
         $document->title
     </a>

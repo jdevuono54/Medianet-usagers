@@ -1,11 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .document {
   border: 1px solid black;
   text-align: center;
   padding: 1em;
 }
+.document a {
+  text-decoration: none;
+}
 
 .error_message {
   color: red;
+  text-align: center;
 }
 
 .searchLink, .validate_btn {
@@ -16,6 +25,16 @@
 }
 .searchLink:hover, .validate_btn:hover {
   background-color: #66b0ff;
+}
+
+header {
+  background-color: #2f3336;
+  height: 10%;
+  top: 0;
+}
+header .logo img {
+  float: left;
+  vertical-align: center;
 }
 
 footer {
@@ -49,6 +68,7 @@ footer {
   #login_form input {
     width: 100%;
     margin-top: 1em;
+    height: 2em;
   }
 
   #sectionImg {
@@ -124,6 +144,7 @@ footer {
   }
   #login_form div:not(:last-of-type) input {
     grid-column: 2/3;
+    height: 2em;
   }
   #login_form div:last-of-type {
     padding: 1em;

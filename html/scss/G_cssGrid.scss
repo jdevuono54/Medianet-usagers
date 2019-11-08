@@ -1,11 +1,19 @@
-
+body{
+  margin: 0;
+  padding: 0;
+}
 .document{
   border:1px solid black;
   text-align: center;
   padding: 1em;
+  a{
+    text-decoration: none;
+
+  }
 }
 .error_message{
   color:red;
+  text-align: center;
 }
 
 .searchLink,.validate_btn{
@@ -18,6 +26,20 @@
     background-color: lighten(#007bff,20%);
   }
 }
+
+header{
+  background-color: #2f3336;
+  height: 10%;
+  .logo{
+    img{
+      float: left;
+      vertical-align: center;
+    }
+  }
+
+  top: 0;
+}
+
 
 footer{
   background-color: #2f3336;
@@ -48,6 +70,7 @@ footer{
     input{
       width: 100%;
       margin-top: 1em;
+      height: 2em;
     }
   }
   //FIN JACQUES
@@ -145,6 +168,7 @@ footer{
       }
       input{
         grid-column: 2/3;
+        height: 2em;
       }
     }
     div:last-of-type{
