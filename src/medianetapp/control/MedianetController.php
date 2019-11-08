@@ -58,8 +58,6 @@ class MedianetController extends \mf\control\AbstractController
         }
     }
 
-
-
     /*Action : View search form*/
     public function viewSearch(){
         if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER){

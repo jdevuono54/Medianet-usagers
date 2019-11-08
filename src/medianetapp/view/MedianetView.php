@@ -81,21 +81,26 @@ EQT;
         return "<h1 class='nomPage'>Rechercher dans le catalogue</h1>
                  <div id='search_form'>
                     <form method='post' action ='to_search' class='container'>
+                    
                         <div id='key'>
                             <label for='txtKey'>Mot clé :</label>
                             <input type = 'text' name = 'txtKey'/>
                         </div>
+                        
                         <div id='type'>
                             <label for='txtType' class='doc'>Type :</label>
                             <select name='txtType' required>{$typeOptions}</select>
                         </div>
+                        
                         <div id='kind'>
                             <label for='txtKind' class='doc'>Genre :</label>
                             <select name='txtKind' required>{$kindOptions}</select>
                         </div>
+                        
                         <div id='btn'>
                             <input type='submit' value='Rechercher' class='validate_btn'/>
                         </div>.$errorMessage
+                        
                     </form>
                 </div>";
     }

@@ -2,12 +2,14 @@ $btnValideColor: #007bff;
 $errorColor: red;
 $gap : 16%;
 
+
 .validate_btn {
   background-color: $btnValideColor;
   height: 3em;
   border-radius: 6px;
 }
 
+/*Debut Younes (Search form style)*/
 .container{
   padding: 1em;
   background: #f9f9f9;
@@ -70,16 +72,118 @@ $gap : 16%;
     }
   }
 }
+
 //Tablette
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+@media (min-width: 450px) and (max-width: 991px) and (orientation: landscape) {
 
-  //CSS
+  .container{
+    display: grid;
+    grid-template-rows: repeat(5,1fr);
+    grid-gap: $gap;
 
+    #key{
+      grid-row:1/2;
+      display: grid;
+      grid-template-columns: repeat(12,1fr);
+
+      label{
+        grid-column:3/5;
+      }
+      input{
+        grid-column: 5/9;
+      }
+    }
+    #type{
+      grid-row: 2/3;
+      display: grid;
+      grid-template-columns: repeat(12,1fr);
+
+      label{
+        grid-column:3/5;
+      }
+      select{
+        grid-column: 5/9;
+      }
+    }
+    #kind{
+      grid-row: 3/4;
+      display: grid;
+      grid-template-columns: repeat(12,1fr);
+
+      label{
+        grid-column:3/5;
+      }
+      select{
+        grid-column: 5/9;
+      }
+    }
+    #btn{
+      grid-row: 4/5;
+      display: grid;
+      grid-template-columns: repeat(12,1fr);
+
+      input{
+        grid-column: 4/9;
+      }
+    }
+  }
 }
 
 //Smartphone
-@media (min-width: 320px) and (max-width: 480px) {
+@media only screen and (max-device-width: 450px){
 
-  //CSS
+
+  .container{
+    display: grid;
+    grid-template-rows: repeat(5,1fr);
+    grid-gap: $gap;
+
+    #key{
+      grid-row:1/2;
+      display: grid;
+      grid-template-columns: repeat(8,1fr);
+
+      label{
+        grid-column:2/4;
+      }
+      input{
+        grid-column: 4/8;
+      }
+    }
+    #type{
+      grid-row: 2/3;
+      display: grid;
+      grid-template-columns: repeat(8,1fr);
+
+      label{
+        grid-column:2/4;
+      }
+      select{
+        grid-column: 4/8;
+      }
+    }
+    #kind{
+      grid-row: 3/4;
+      display: grid;
+      grid-template-columns: repeat(8,1fr);
+
+      label{
+        grid-column:2/4;
+      }
+      select{
+        grid-column: 4/8;
+      }
+    }
+    #btn{
+      grid-row: 4/5;
+      display: grid;
+      grid-template-columns: repeat(8,1fr);
+
+      input{
+        grid-column: 3/6;
+      }
+    }
+  }
 
 }
+/*Fin Younes (Search form)*/
