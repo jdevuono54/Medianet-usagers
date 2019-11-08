@@ -257,6 +257,12 @@ EQT;
             case "signup_request":
                 $content = $this->renderFormSignupRequest();
                 break;
+            case "update_profil":
+                $content = $this->renderUser();
+                break;
+            case "user":
+                $content = $this->renderUser();
+                break;
         }
 
 

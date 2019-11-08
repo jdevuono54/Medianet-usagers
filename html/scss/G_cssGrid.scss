@@ -178,6 +178,12 @@ footer{
 //Smartphone Younes
 @media only screen and (max-device-width: 450px) {
 
+table td {
+display: block;
+text-align: left;
+border: 1px solid black;
+padding-right: px;
+}
 
   .container {
     display: grid;
