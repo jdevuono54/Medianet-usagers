@@ -3,13 +3,21 @@ body {
   padding: 0;
 }
 
-.document {
+.catalogue .document {
   border: 1px solid black;
   text-align: center;
   padding: 1em;
 }
-.document a {
+.catalogue .document a {
   text-decoration: none;
+}
+.catalogue #titreDoc {
+  grid-column: 1/4;
+}
+.catalogue #titreDoc h1 {
+  border: 1px solid black;
+  text-align: center;
+  background-color: grey;
 }
 
 .error_message {
@@ -49,6 +57,9 @@ footer {
 
 @media (min-width: 0px) and (max-width: 600px) {
   .catalogue {
+    width: 100%;
+  }
+  .catalogue #titreDoc {
     width: 100%;
   }
 

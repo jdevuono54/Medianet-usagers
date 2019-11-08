@@ -2,15 +2,26 @@ body{
   margin: 0;
   padding: 0;
 }
-.document{
-  border:1px solid black;
-  text-align: center;
-  padding: 1em;
-  a{
-    text-decoration: none;
+.catalogue{
+  .document{
+    border:1px solid black;
+    text-align: center;
+    padding: 1em;
+    a{
+      text-decoration: none;
 
+    }
+  }
+  #titreDoc {
+    grid-column: 1/4;
+    h1 {
+      border: 1px solid black;
+      text-align: center;
+      background-color: grey;
+    }
   }
 }
+
 .error_message{
   color:red;
   text-align: center;
@@ -54,6 +65,10 @@ footer{
   //JACQUES
   .catalogue {
     width: 100%;
+
+    #titreDoc{
+      width: 100%;
+    }
   }
   .document:not(:first-of-type){
     margin-top: 1em;

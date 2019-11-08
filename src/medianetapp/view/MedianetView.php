@@ -57,6 +57,9 @@ EQT;
         }
         $html = <<<EQT
             <div class="catalogue">
+                <div id="titreDoc">
+                <h1>Fiche détaillée : </h1>
+            </div>
                 <a href="${src}/main.php/search" class="searchLink">Recherche</a>
                 ${blocsDocuments}
 </div>
