@@ -17,6 +17,7 @@ $btnValideColor: #007bff;
 .pagination{
   text-align: center;
   grid-column: 2/3;
+  margin-bottom: 5em;
 }
 body{
   margin: 0 0 5% 0;
@@ -40,6 +41,33 @@ body{
       background-color: grey;
     }
   }
+}
+
+/*KELMOUA SCSS*/
+$formcolor:#2F3336;
+$tablecolor: #bfbfbf;
+$profilColor: red;
+
+th{
+  border:1px solid black;
+  background-color:#8c8c8c;
+
+
+}
+#btnvalider
+{
+
+}
+tr,td
+{
+  background-color:$tablecolor;
+}
+.h1,.h2{
+  font-size: 24px;
+}
+
+.tableprofil{
+  margin: auto;
 }
 
 #login_form{
@@ -173,6 +201,112 @@ footer{
   }
   //FIN HABIB
 
+
+
+
+}
+// POUR TOUT ECRANS
+@media(min-width: 0px){
+  .divProfil {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0%;
+
+
+    .h1 {
+      grid-column: 5/ 8;
+      grid-row: 1;
+    }
+    .h2{
+      grid-column: 6/ 8;
+
+    }
+    .formgl{
+      grid-column: 6/ 10;
+      grid-row: 2;
+
+    }
+    .divProDoc{
+      grid-column: 2/ 12;
+      grid-row: 3;
+
+    }
+
+
+  }
+
+}
+@media (min-width: 0px) and (orientation: portrait) and (max-width: 992px){
+
+
+  th{
+    font-size: 10px;
+  }
+
+  .h1,.h2{
+    font-size: 14px;
+
+  }
+
+
+
+}
+
+@media (max-width: 700px){
+
+  .divProfil {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0%;
+
+
+    .h1 {
+      grid-column: 4/ 8;
+      grid-row: 1;
+    }
+    .h2{
+      grid-column: 4/ 8;
+
+    }
+    .formgl{
+      grid-column: 4/ 10;
+      grid-row: 2;
+
+    }
+    .divProDoc{
+      grid-column: 2/ 12;
+      grid-row: 3;
+
+    }
+    table thead {
+      display: none;
+      border: 1px solid black;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+    }
+
+    table tr{
+      display: block;
+      border: 1px solid black;
+      margin-bottom: 1em;
+      background-color: black;
+    }
+
+    table td {
+      display: block;
+      text-align: left;
+      border: 1px solid black;
+      padding-right: px;
+    }
+
+    table td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      ext-transform: uppercase;
+    }
+  }
 }
 
 //Smartphone Younes
@@ -182,7 +316,7 @@ table td {
 display: block;
 text-align: left;
 border: 1px solid black;
-padding-right: px;
+padding-right: 5px;
 }
 
   .container {

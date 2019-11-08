@@ -208,13 +208,9 @@ class MedianetController extends \mf\control\AbstractController
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
-
-}
-
-
     public function viewUser(){
-             if(isset($_SESSION["id"]) && filter_var($_SESSION["id"],FILTER_VALIDATE_INT)){
-        $user = User::where("id","=",$_SESSION["id"])->first();
+             if(isset($_SESSION["user_login"])){
+        $user = User::where("mail","=",$_SESSION["user_login"])->first();
 
         if($user != null){
             $vue = new MedianetView($user);
@@ -224,7 +220,7 @@ class MedianetController extends \mf\control\AbstractController
 
     else{
       $vue = new MedianetView(null);
-      $vue->render("user");
+      $vue->render("login");
     }
     }
 
@@ -238,9 +234,9 @@ class MedianetController extends \mf\control\AbstractController
           $mail = strip_tags(trim($_REQUEST['txtMail']));
           $phone = strip_tags(trim($_REQUEST['txtPhone']));
 
-          $user= User::where("id","=",$_SESSION["id"])->first();
+          $user= User::where("mail","=",$_SESSION["user_login"])->first();
 
-          if(User::where('mail','=',$mail)->where('id','<>',$_SESSION["id"])->first()!=$mail){
+          if(User::where('mail','=',$mail)->where('mail','<>',$_SESSION["user_login"])->first()!=$mail){
              $user->name=$name;
              $user->mail=$mail;
              $user->phone=$phone;
