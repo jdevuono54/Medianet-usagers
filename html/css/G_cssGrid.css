@@ -18,6 +18,16 @@
   background-color: #66b0ff;
 }
 
+footer {
+  background-color: #2f3336;
+  height: 2em;
+  color: white;
+  bottom: 0;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
 @media (min-width: 0px) and (max-width: 600px) {
   .catalogue {
     width: 100%;

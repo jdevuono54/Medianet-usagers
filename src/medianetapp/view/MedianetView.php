@@ -17,7 +17,7 @@ class MedianetView extends \mf\view\AbstractView
         return "";
     }
     private function renderFooter(){
-        return "";
+        return "Copyright@2019";
     }
     private function renderCatalogue(){
         $documents = $this->data;
