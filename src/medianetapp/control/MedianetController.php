@@ -57,7 +57,11 @@ class MedianetController extends \mf\control\AbstractController
         }
     }
 
-
+    public function logout(){
+        $auth = new MedianetAuthentification();
+        $auth->logout();
+        Router::executeRoute("login");
+    }
 
     /*Action : View search form*/
     public function viewSearch(){

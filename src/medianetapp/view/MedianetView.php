@@ -2,6 +2,7 @@
 
 namespace medianetapp\view;
 
+use medianetapp\auth\MedianetAuthentification;
 use medianetapp\model\Kind;
 use medianetapp\model\Type;
 use mf\router\Router;
@@ -18,18 +19,36 @@ class MedianetView extends \mf\view\AbstractView
         $src = $httpRequet->root;
         $router = new Router;
         $catalogueRoute = $router->urlFor("catalogue");
+        $searchRoute = $router->urlFor("search");
+        $logout = $router->urlFor("logout");
 
         $header = <<<EQT
-<div class="logo">
 
-    <a href="$catalogueRoute">
-      <img src="${src}/html/img/small/books.png" alt="logo">  
-      <h1>Medianet</h1>
-    </a>
-    
-</div>
+<a href="$catalogueRoute">
+    <h1>Medianet</h1>
+</a>
 
 EQT;
+
+        if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER) {
+            $header .= <<<EQT
+<nav>
+    <a href="$catalogueRoute">
+        <img src="${src}/html/img/icons/home.png" alt="catalogue">
+    </a>
+    <a href="$searchRoute">
+        <img src="${src}/html/img/icons/search.png" alt="recherche">
+    </a>
+    <a href="$logout">
+        <img src="${src}/html/img/icons/profil.png" alt="profil">
+    </a>
+    <a href="$logout">
+        <img src="${src}/html/img/icons/exit.png" alt="logout">
+    </a>
+</nav>
+EQT;
+}
+
 
         return $header;
     }
@@ -58,9 +77,8 @@ EQT;
         $html = <<<EQT
             <div class="catalogue">
                 <div id="titreDoc">
-                <h1>Fiche détaillée : </h1>
+                <h1>Catalogue</h1>
             </div>
-                <a href="${src}/main.php/search" class="searchLink">Recherche</a>
                 ${blocsDocuments}
 </div>
 EQT;

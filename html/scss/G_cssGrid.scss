@@ -22,12 +22,16 @@ body{
   }
 }
 
+#login_form{
+  margin-top: 10vh;
+}
+
 .error_message{
   color:red;
   text-align: center;
 }
 
-.searchLink,.validate_btn{
+.validate_btn{
   background-color: #007bff;
   height: 2em;
   text-align: center;
@@ -42,14 +46,15 @@ header{
   background-color: #2f3336;
   height: 10%;
   text-align: center;
-  .logo{
     a{
       text-decoration: none;
       h1{
         display: inline;
         color: white;
       }
-    }
+      img{
+        margin-right: 1em;
+      }
   }
 }
 
@@ -74,10 +79,6 @@ footer{
   }
   .document:not(:first-of-type){
     margin-top: 1em;
-  }
-  .searchLink{
-    display: block;
-    margin-bottom: 1em;
   }
 
   #login_form{
@@ -161,11 +162,6 @@ footer{
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1.6%;
 
-    .searchLink{
-      grid-column: 3/4;
-      justify-self: right;
-      width: 100%;
-    }
   }
 
   #login_form{
@@ -248,12 +244,6 @@ footer{
     margin-left: 20%;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1.6%;
-
-    .searchLink{
-      grid-column: 3/4;
-      justify-self: right;
-      width: 100%;
-    }
   }
 
   #login_form{
