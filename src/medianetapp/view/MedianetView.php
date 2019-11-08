@@ -124,7 +124,7 @@ EQT;
             
                 <picture id="imageDoc">
                      <source media="(min-width: 992px)" srcset="$chemin->root/html/img/large/$picture">
-                     <source media="(min-width: 325px)" srcset="$chemin->root/html/img/medium/$picture">
+                     <source media="(min-width: 600px)" srcset="$chemin->root/html/img/medium/$picture">
                      <source media="(min-width: 0px)" srcset="$chemin->root/html/img/small/$picture">
                      <img alt='home' src='$chemin->root/html/img/medium/$picture'>
                 </picture>
