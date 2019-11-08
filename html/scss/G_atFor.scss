@@ -39,7 +39,7 @@ $errorColor: red;
 }
 
 .nomPage{
-  width: 50%;
+  @include cellule(6,3,12,0%);
   margin-left: 25%;
   text-align: center;
   height: auto;
@@ -50,23 +50,98 @@ $errorColor: red;
 
 // POUR TOUT ECRANS
 @media(min-width: 0px){
+/*  #signup_form{
+    @include cellule(6,3,12,1.6%);
+  }*/
+  //////////////
+  //////////////
+  #signup_form {
+  display: grid;
+  padding: 1em;
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  margin: 2rem auto 0 auto;
+  //max-width: 600px;
+  padding: 1em;
+  }
+  #signup_form input {
+    background: #fff;
+    border: 1px solid #9c9c9c;
+    @include cellule(4,2,6,0%);
+  }
+  #signup_form input[type="submit"] {
+    background: lightgrey;
+    padding: 0.7em;
+    @include cellule(2,3,6,0%);
+    border: 0;
+  }
+  #signup_form input[type="submit"]:hover {
+    background: #3399ff;
+  }
+
+  #signup_form label {
+    font-family: verdana;
+    font-size: 12px;
+    margin-top: 10em;
+    //padding: 0.5em 0.5em 0.5em 0;
+    //@include cellule(2,1,6,0%);
+  }
+
+  #signup_form input {
+    padding: 0.7em;
+    margin-bottom: 0.5rem;
+  }
+  #signup_form input:focus {
+    outline: 3px solid #3399ff;
+  }
 
 }
+
+
 
 /* TOUT ECRANS PORTRAIT */
-@media (min-width: 0px) and (orientation: portrait){
-
-}
 
 /* TABLETTES PORTRAIT */
-@media (min-width: 0px) and (orientation: portrait) and (max-width: 992px){
+@media (min-width: 991px) {
+  #signup_form{
+      @include cellule(6,3,12,1.6%);
+    }
+
 }
-/* TABLETTES PAYSAGE */
-@media (min-width: 0px) and (orientation: landscape) and (max-width: 992px){
+/* SmartPhone */
+@media (max-width: 990px){
+  #signup_form{
+    @include cellule(12,0,12,0);
+  }
+  #signup_form input {
+      background: #fff;
+      border: 1px solid #9c9c9c;
+      @include cellule(12,0,12,0%);
+      height: 80px;
+      font-size: 30px;
+  }
+  #signup_form label {
+      font-family: verdana;
+      font-size: 30px;
+      margin-top: 10em;
+  }
+  #signup_form input[type="submit"] {
+    background: lightgrey;
+    padding: 0.7em;
+    @include cellule(4,1,6,0%);
+    height: 80px;
+    font-size: 30px;
+  }
+  .nomPage{
+  @include cellule(4,1,6,0%);
+  font-size:36px;
+  height: 70px;
+  text-align:center;
+  padding-top: .5em;
+}
+
+
 
 }
 
 /*LAPTOP*/
-@media (min-width: 992px){
-
-}

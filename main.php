@@ -33,6 +33,8 @@ $router->addRoute("login","/login","medianetapp\control\MedianetController","vie
 $router->addRoute("logout","/logout","medianetapp\control\MedianetController","logout",null);
 $router->addRoute("check_login","/check_login","medianetapp\control\MedianetController","checkLogin",null);
 $router->addRoute("document","/document","medianetapp\control\MedianetController","viewDocument",null);
+$router->addRoute("signup_request","/signup_request","medianetapp\control\MedianetController","viewSignupRequest",null);
+$router->addRoute("add_signup_request","/add_signup_request","medianetapp\control\MedianetController","addSignupRequest",null);
 
 $router->setDefaultRoute('/login');
 /*Route : Search*/
