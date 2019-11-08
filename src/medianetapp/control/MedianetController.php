@@ -113,26 +113,29 @@ class MedianetController extends \mf\control\AbstractController
     }
 
     public function viewDocument(){
+        if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER) {
 
-    if(isset($_GET["reference"])){
+            if (isset($_GET["reference"])) {
 
-        $ficheDoc = Document::select()->where("reference", "=", $_GET["reference"])->first();
+                $ficheDoc = Document::select()->where("reference", "=", $_GET["reference"])->first();
 
-        if($ficheDoc == null ){
+                if ($ficheDoc == null) {
 
-            Router::executeRoute("catalogue");
-        }else{
-            $vue = new MedianetView($ficheDoc);
-            $vue->render("viewDocument");
+                    Router::executeRoute("catalogue");
+                } else {
+                    $vue = new MedianetView($ficheDoc);
+                    $vue->render("viewDocument");
+                }
+
+
+            } else {
+
+                Router::executeRoute("catalogue");
+            }
+
         }
-
-
-    }else{
-
-        Router::executeRoute("catalogue");
+        else{
+            Router::executeRoute("login");
+        }
     }
-
-
-    }
-
 }
