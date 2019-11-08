@@ -21,6 +21,7 @@ class MedianetView extends \mf\view\AbstractView
         $catalogueRoute = $router->urlFor("catalogue");
         $searchRoute = $router->urlFor("search");
         $logout = $router->urlFor("logout");
+        $checkSignup = $router->urlFor("signup_request");
 
         $header = <<<EQT
 
@@ -41,6 +42,9 @@ EQT;
     </a>
     <a href="$logout">
         <img src="${src}/html/img/icons/profil.png" alt="profil">
+    </a>
+    <a href="$checkSignup">
+        <img src="${src}/html/img/icons/signup.png" alt="signupCheck">
     </a>
     <a href="$logout">
         <img src="${src}/html/img/icons/exit.png" alt="logout">
