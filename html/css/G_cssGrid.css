@@ -38,11 +38,14 @@ body {
 header {
   background-color: #2f3336;
   height: 10%;
-  top: 0;
+  text-align: center;
 }
-header .logo img {
-  float: left;
-  vertical-align: center;
+header .logo a {
+  text-decoration: none;
+}
+header .logo a h1 {
+  display: inline;
+  color: white;
 }
 
 footer {
@@ -133,9 +136,9 @@ footer {
     grid-gap: 1.6%;
   }
   .catalogue .searchLink {
-    grid-column: 1/3;
-    justify-self: center;
-    width: 33%;
+    grid-column: 3/4;
+    justify-self: right;
+    width: 100%;
   }
 
   #login_form {
@@ -204,9 +207,9 @@ footer {
     grid-gap: 1.6%;
   }
   .catalogue .searchLink {
-    grid-column: 1/4;
+    grid-column: 3/4;
     justify-self: right;
-    width: 20%;
+    width: 100%;
   }
 
   #login_form {

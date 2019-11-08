@@ -24,9 +24,9 @@ class MedianetView extends \mf\view\AbstractView
 
     <a href="$catalogueRoute">
       <img src="${src}/html/img/small/books.png" alt="logo">  
+      <h1>Medianet</h1>
     </a>
-    <h1>Medianet</h1>
-
+    
 </div>
 
 EQT;

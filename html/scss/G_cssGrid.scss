@@ -41,14 +41,16 @@ body{
 header{
   background-color: #2f3336;
   height: 10%;
+  text-align: center;
   .logo{
-    img{
-      float: left;
-      vertical-align: center;
+    a{
+      text-decoration: none;
+      h1{
+        display: inline;
+        color: white;
+      }
     }
   }
-
-  top: 0;
 }
 
 
@@ -160,9 +162,9 @@ footer{
     grid-gap: 1.6%;
 
     .searchLink{
-      grid-column: 1/3;
-      justify-self: center;
-      width: 33%;
+      grid-column: 3/4;
+      justify-self: right;
+      width: 100%;
     }
   }
 
@@ -248,9 +250,9 @@ footer{
     grid-gap: 1.6%;
 
     .searchLink{
-      grid-column: 1/4;
+      grid-column: 3/4;
       justify-self: right;
-      width: 20%;
+      width: 100%;
     }
   }
 
