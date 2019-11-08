@@ -57,8 +57,8 @@ class MedianetView extends \mf\view\AbstractView
                     <div id="detailDoc">
                     
                          <h4 id="titre">$fiche->title </h4>
-                         <h4 id="descriprion"> Description :</h4> 
-                             <div id="descriprion">
+                         <h4 class="description"> Description :</h4> 
+                             <div class="description">
                              $fiche->description
                             </div>
                             
@@ -77,7 +77,7 @@ class MedianetView extends \mf\view\AbstractView
         </section>
 
 EQT;
-        echo $ficheDocument;
+        return $ficheDocument;
 
 
 
