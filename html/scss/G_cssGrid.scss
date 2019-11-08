@@ -200,6 +200,17 @@ footer{
     background-color: grey;
   }
 
+      label{
+        grid-column:2/4;
+      }
+      select{
+        grid-column: 4/8;
+      }
+    }
+    #kind{
+      grid-row: 3/4;
+      display: grid;
+      grid-template-columns: repeat(8,1fr);
 
   #imageDoc{
     float: left;
