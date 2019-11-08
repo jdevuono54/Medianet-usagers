@@ -58,6 +58,12 @@ class MedianetController extends \mf\control\AbstractController
         }
     }
 
+    public function logout(){
+        $auth = new MedianetAuthentification();
+        $auth->logout();
+        Router::executeRoute("login");
+    }
+
     /*Action : View search form*/
     public function viewSearch(){
         if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER){
@@ -105,4 +111,28 @@ class MedianetController extends \mf\control\AbstractController
 
         return $message_erreur;
     }
+
+    public function viewDocument(){
+
+    if(isset($_GET["reference"])){
+
+        $ficheDoc = Document::select()->where("reference", "=", $_GET["reference"])->first();
+
+        if($ficheDoc == null ){
+
+            Router::executeRoute("catalogue");
+        }else{
+            $vue = new MedianetView($ficheDoc);
+            $vue->render("viewDocument");
+        }
+
+
+    }else{
+
+        Router::executeRoute("catalogue");
+    }
+
+
+    }
+
 }

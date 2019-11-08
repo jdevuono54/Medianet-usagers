@@ -2,9 +2,11 @@
 
 namespace medianetapp\view;
 
+use medianetapp\auth\MedianetAuthentification;
 use medianetapp\model\Kind;
 use medianetapp\model\Type;
 use mf\router\Router;
+use mf\utils\HttpRequest;
 
 class MedianetView extends \mf\view\AbstractView
 {
@@ -13,51 +15,156 @@ class MedianetView extends \mf\view\AbstractView
     }
 
     private function renderHeader(){
-        return "";
+        $httpRequet = new HttpRequest();
+        $src = $httpRequet->root;
+        $router = new Router;
+        $catalogueRoute = $router->urlFor("catalogue");
+        $searchRoute = $router->urlFor("search");
+        $logout = $router->urlFor("logout");
+
+        $header = <<<EQT
+
+<a href="$catalogueRoute">
+    <h1>Medianet</h1>
+</a>
+
+EQT;
+
+        if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER) {
+            $header .= <<<EQT
+<nav>
+    <a href="$catalogueRoute">
+        <img src="${src}/html/img/icons/home.png" alt="catalogue">
+    </a>
+    <a href="$searchRoute">
+        <img src="${src}/html/img/icons/search.png" alt="recherche">
+    </a>
+    <a href="$logout">
+        <img src="${src}/html/img/icons/profil.png" alt="profil">
+    </a>
+    <a href="$logout">
+        <img src="${src}/html/img/icons/exit.png" alt="logout">
+    </a>
+</nav>
+EQT;
+}
+
+
+        return $header;
     }
     private function renderFooter(){
-        return "";
+        return "Copyright@2019";
     }
     private function renderCatalogue(){
         $documents = $this->data;
-
-        /*
-         *
-         * MANQUE URL FOR
-         */
+        $httpRequet = new HttpRequest();
+        $src = $httpRequet->root;
         $blocsDocuments="";
+
         foreach ($documents as $document){
-            $blocsDocuments .= "<div class='document'><a href='?id=".$document->id."'>".$document->title."</a></div>
-";
+
+            $blocsDocuments .= <<<EQT
+<div class='document'>
+    <a href="document?reference=$document->reference">
+        <div class='vignette'>
+            <img src="${src}/html/img/small/$document->picture" alt="$document->picture">
+        </div>
+        $document->title
+    </a>
+   </div>
+EQT;
         }
         $html = <<<EQT
             <div class="catalogue">
+                <div id="titreDoc">
+                <h1>Catalogue</h1>
+            </div>
                 ${blocsDocuments}
 </div>
 EQT;
         return $html;
     }
 
+    private function renderFicheDocument(){
+        $chemin = new HttpRequest();
+        $fiche = $this->data;
+        $dispo = $fiche->state->name;
+        $type = $fiche->type->name;
+        $kind = $fiche->kind->name;
+        $picture = $fiche->picture;
+
+        /*<img alt='home' src='$chemin->root/html/img/large/$picture'>*/
+
+        $test = $chemin->root."/html/img/large/".$picture;
+
+        $ficheDocument = <<<EQT
+
+        <section>
+            <article id="articleDoc">
+            <div id="titreDoc">
+                        <h1>Fiche détaillée : </h1>
+            </div>
+            
+            <section id="sectionImg">
+            
+                <picture id="imageDoc">
+                     <source media="(min-width: 992px)" srcset="$chemin->root/html/img/large/$picture">
+                     <source media="(min-width: 325px)" srcset="$chemin->root/html/img/medium/$picture">
+                     <source media="(min-width: 0px)" srcset="$chemin->root/html/img/small/$picture">
+                     <img alt='home' src='$chemin->root/html/img/medium/$picture'>
+                </picture>
+            
+            </section>
+
+                    
+                    <div id="detailDoc">
+                    
+                         <h4 id="titre">$fiche->title </h4>
+                         <h4 class="description"> Description :</h4> 
+                             <div class="description">
+                             $fiche->description
+                            </div>
+                            
+                                
+                         <div id="type">Format : ${type}</div>
+                         <div id="genre">Genre : ${kind} </div>
+                         <div id="dispo">Disponibilité : ${dispo}</div>
+                            
+                         
+                    
+                    </div>
+
+               
+            
+            </article>
+        </section>
+
+EQT;
+        return $ficheDocument;
+    }
     public function renderLogin(){
         $error_message = $this->data["error_message"];
         $html = <<< EQT
-<form method="POST" action="check_login">
-    <div>
-        <label>Adresse mail :</label>
-        <input type="email" name="mail" required>
-    </div>
-    <div>
-        <label>Mot de passe :</label>
-        <input type="password" name="password" required>
-    </div>
-    <div>
-        <input type="submit" value="Connexion">
-        <p class="error_message">${error_message}</p>
-    </div>
-</form>
+<div id="login_form">
+    <form method="POST" action="check_login">
+        <div class="mail_login_form">
+            <label>Adresse mail :</label>
+            <input type="email" name="mail" required>
+        </div>
+        <div>
+            <label>Mot de passe :</label>
+            <input type="password" name="password" required>
+        </div>
+        <div>
+            <input type="submit" value="Connexion" class="validate_btn">
+            <p class="error_message">${error_message}</p>
+        </div>
+    </form>
+</div>
 EQT;
         return $html;
     }
+  
 
     /*Function that return the search view body*/
     private function renderSearchForm(){
@@ -105,6 +212,7 @@ EQT;
                 </div>";
     }
 
+
     protected function renderBody($selector=null){
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
@@ -118,6 +226,9 @@ EQT;
                 break;
             case "search":
                 $content=$this->renderSearchForm();
+                break;
+            case "viewDocument":
+                $content = $this->renderFicheDocument();
                 break;
         }
 

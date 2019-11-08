@@ -1,79 +1,240 @@
+$gap:16%;
 $btnValideColor: #007bff;
-$errorColor: red;
-$gap : 16%;
-
-
-.validate_btn {
-  background-color: $btnValideColor;
-  height: 3em;
-  border-radius: 6px;
-}
-
-/*Debut Younes (Search form style)*/
 .container{
   padding: 1em;
   background: #f9f9f9;
   border: 1px solid #c1c1c1;
   margin: 2rem auto 0 auto;
   max-width: 600px;
-  padding: 1em;
 
   display: grid;
 }
+.validate_btn {
+  background-color: $btnValideColor;
+  height: 3em;
+  border-radius: 6px;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+.catalogue{
+  .document{
+    border:1px solid black;
+    text-align: center;
+    padding: 1em;
+    a{
+      text-decoration: none;
 
-@media(min-width:1025px) {
-  form{
-    grid-template-rows : repeat(4,1fr);
-    gap:$gap;
-  }
-  #key{
-    display: grid;
-    grid-template-columns : repeat(12,1fr);
-    grid-row: 1/2;
-
-    label{
-      grid-column: 3/6;
-    }
-    input{
-      grid-column: 6/10;
-    }
-  }
-  #type{
-    display: grid;
-    grid-template-columns : repeat(12,1fr);
-    grid-row:2/3;
-
-    label{
-      grid-column: 3/6;
-    }
-    select{
-      grid-column: 6/10;
     }
   }
-  #kind{
-    display: grid;
-    grid-template-columns : repeat(12,1fr);
-    grid-row: 3/4;
-
-    label{
-      grid-column: 3/6;
-    }
-    select{
-      grid-column: 6/10;
-    }
-  }
-  #btn{
-    display: grid;
-    grid-template-columns : repeat(12,1fr);
-    grid-row: 4/5;
-
-    input{
-      grid-column: 5/9;
+  #titreDoc {
+    grid-column: 1/4;
+    h1 {
+      border: 1px solid black;
+      text-align: center;
+      background-color: grey;
     }
   }
 }
 
-//Tablette
+#login_form{
+  margin-top: 10vh;
+}
+
+.error_message{
+  color:red;
+  text-align: center;
+}
+
+.validate_btn{
+  background-color: #007bff;
+  height: 2em;
+  text-align: center;
+  text-decoration:none;
+  border-radius: 6px;
+
+  &:hover{
+    background-color: lighten(#007bff,20%);
+  }
+}
+
+header{
+  background-color: #2f3336;
+  height: 10%;
+  text-align: center;
+  a{
+    text-decoration: none;
+    h1{
+      display: inline;
+      color: white;
+    }
+    img{
+      margin-right: 1em;
+    }
+  }
+}
+
+
+footer{
+  background-color: #2f3336;
+  height: 5%;
+  color: white;
+  bottom: 0;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+@media (min-width: 0px) and (max-width: 600px) {
+  //JACQUES
+  .catalogue {
+    width: 100%;
+
+    #titreDoc{
+      width: 100%;
+    }
+  }
+  .document:not(:first-of-type){
+    margin-top: 1em;
+  }
+
+  #login_form{
+    border: 1px solid black;
+    padding: 1em;
+
+    input{
+      width: 100%;
+      margin-top: 1em;
+      height: 2em;
+    }
+  }
+  //FIN JACQUES
+  //HABIB
+  #sectionImg{
+
+    display: grid;
+
+    grid-template-columns: repeat(12,1fr);
+    grid-gap: 1.6%;
+
+    picture{
+
+      grid-column: 4/10;
+
+    }
+
+
+  }
+  #titreDoc {
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 1.6%;
+
+    h1 {
+      grid-column: 2/12;
+      border: 1px solid black;
+      text-align: center;
+      background-color: grey;
+
+
+    }
+  }
+
+  #detailDoc{
+
+    display: grid;
+
+    grid-template-columns: repeat(12,1fr);
+    grid-gap: 1.6%;
+    grid-column: 1/13;
+
+    #titre{
+      grid-column: 1/13;
+      text-decoration: underline;
+    }
+    .description{
+
+      grid-column: 1/13;
+    }
+    #type,#genre,#dispo{
+      grid-column: 1/13;
+      font-size: small;
+
+    }
+    #type{
+      margin-top: 2em;
+    }
+
+  }
+  //FIN HABIB
+
+}
+
+//Smartphone Younes
+@media only screen and (max-device-width: 450px) {
+
+
+  .container {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: $gap;
+
+    #key {
+      grid-row: 1/2;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+
+      label {
+        grid-column: 2/4;
+      }
+
+      input {
+        grid-column: 4/8;
+      }
+    }
+
+    #type {
+      grid-row: 2/3;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+
+      label {
+        grid-column: 2/4;
+      }
+
+      select {
+        grid-column: 4/8;
+      }
+    }
+
+    #kind {
+      grid-row: 3/4;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+
+      label {
+        grid-column: 2/4;
+      }
+
+      select {
+        grid-column: 4/8;
+      }
+    }
+
+    #btn {
+      grid-row: 4/5;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+
+      input {
+        grid-column: 3/6;
+      }
+    }
+  }
+}
+
+// Tablette Younes
 @media (min-width: 450px) and (max-width: 991px) and (orientation: landscape) {
 
   .container{
@@ -128,32 +289,52 @@ $gap : 16%;
     }
   }
 }
-
-//Smartphone
-@media only screen and (max-device-width: 450px){
-
-
-  .container{
+@media (min-width: 600px) and (max-width: 992px){
+  // JACQUES
+  .catalogue {
     display: grid;
-    grid-template-rows: repeat(5,1fr);
-    grid-gap: $gap;
+    width: 60%;
+    margin-left: 20%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.6%;
 
-    #key{
-      grid-row:1/2;
+  }
+
+  #login_form{
+    border: 1px solid black;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: auto;
+
+    div:not(:last-of-type){
+      padding: 1em;
       display: grid;
-      grid-template-columns: repeat(8,1fr);
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1.6%;
 
       label{
-        grid-column:2/4;
+        grid-column: 1/2;
       }
       input{
-        grid-column: 4/8;
+        grid-column: 2/3;
+        height: 2em;
       }
     }
-    #type{
-      grid-row: 2/3;
-      display: grid;
-      grid-template-columns: repeat(8,1fr);
+    div:last-of-type{
+      padding: 1em;
+      input{
+        grid-column: 1/3;
+        width: 100%;
+      }
+    }
+  }
+  //FIN JACQUES
+  // HABIB
+  #titreDoc{
+    border: 1px solid black;
+    text-align: center;
+    background-color: grey;
+  }
 
       label{
         grid-column:2/4;
@@ -167,23 +348,173 @@ $gap : 16%;
       display: grid;
       grid-template-columns: repeat(8,1fr);
 
+  #imageDoc{
+    float: left;
+    margin-top: 6.5em;
+    margin-left: 2em;
+  }
+  #detailDoc{
+
+    display: grid;
+
+    grid-template-columns: repeat(6,1fr);
+    grid-gap: 1.6%;
+
+    margin-top: 5em;
+
+    #titre{
+      grid-column: 2/7;
+      text-decoration: underline;
+    }
+    .description{
+      grid-column: 2/7;
+    }
+    #type,#genre,#dispo{
+
+      grid-column: 2/7;
+      font-size: small;
+
+    }
+    #type{
+      margin-top: 5em;
+    }
+  }
+  //FIN HABIB
+
+}
+
+@media (min-width: 992px) {
+  // JACQUES
+  .catalogue {
+    display: grid;
+    width: 60%;
+    margin-left: 20%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.6%;
+  }
+
+  #login_form{
+    border: 1px solid black;
+    width: 30%;
+    margin-left: 40%;
+    margin-right: auto;
+
+    div:not(:last-of-type){
+      padding: 1em;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1.6%;
+
       label{
-        grid-column:2/4;
+        grid-column: 1/2;
       }
-      select{
-        grid-column: 4/8;
+      input{
+        grid-column: 2/3;
       }
     }
-    #btn{
-      grid-row: 4/5;
-      display: grid;
-      grid-template-columns: repeat(8,1fr);
-
+    div:last-of-type{
+      padding: 1em;
       input{
-        grid-column: 3/6;
+        grid-column: 1/3;
+        width: 100%;
       }
     }
   }
+  //FIN JACQUES
 
+  //HABIB
+  #articleDoc {
+
+    display: grid;
+
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1.6%;
+    #titreDoc {
+
+      grid-column: 1/7;
+      margin-top: 5em;
+      border: 1px solid black;
+      text-align: center;
+      background-color: grey;
+
+
+    }
+    #titre{
+      grid-column: 5/6;
+      text-decoration: underline;
+      font-size: larger;
+    }
+    #sectionImg{
+      grid-column: 1/3;
+      margin-top: 5em;
+      margin-left: 1em;
+    }
+    #detailDoc{
+      grid-column: 3/7;
+      margin-top: 5em;
+
+    }
+    #type{
+      margin-top: 5em;
+      font-size: medium;
+    }
+    #genre,#dispo{
+      margin-top: 0.5em;
+      font-size: medium;
+
+    }
+  }
+  //FIN HABIB
+
+  //Debut Younes
+  form{
+    grid-template-rows : repeat(4,1fr);
+    gap:$gap;
+  }
+  #key{
+    display: grid;
+    grid-template-columns : repeat(12,1fr);
+    grid-row: 1/2;
+
+    label{
+      grid-column: 3/6;
+    }
+    input{
+      grid-column: 6/10;
+    }
+  }
+  #type{
+    display: grid;
+    grid-template-columns : repeat(12,1fr);
+    grid-row:2/3;
+
+    label{
+      grid-column: 3/6;
+    }
+    select{
+      grid-column: 6/10;
+    }
+  }
+  #kind{
+    display: grid;
+    grid-template-columns : repeat(12,1fr);
+    grid-row: 3/4;
+
+    label{
+      grid-column: 3/6;
+    }
+    select{
+      grid-column: 6/10;
+    }
+  }
+  #btn{
+    display: grid;
+    grid-template-columns : repeat(12,1fr);
+    grid-row: 4/5;
+
+    input{
+      grid-column: 5/9;
+    }
+  }
+  //Fin Younes
 }
-/*Fin Younes (Search form)*/
