@@ -23,8 +23,26 @@ class MedianetController extends \mf\control\AbstractController
 
     public function viewCatalogue(){
         if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER){
-            $lastDocuments = Document::select()->orderBy('id', 'DESC')->limit(6)->get();
-            $vue = new MedianetView($lastDocuments);
+            $next = false;
+            $return = false;
+
+            if(!isset($_GET["page"])){
+                $lastDocuments = Document::select()->orderBy('id', 'DESC')->limit(6)->get();
+                $next=2;
+            }
+            else{
+                $offset = 6*($_GET["page"]-1);
+                $lastDocuments = Document::select()->orderBy('id', 'DESC')->limit(6)->offset($offset)->get();
+
+                $nbDoc = Document::select()->count();
+                if($nbDoc > $offset+6){
+                    $next=$_GET["page"]+1;
+                }
+                if($_GET["page"] > 1){
+                    $return=$_GET["page"]-1;
+                }
+            }
+            $vue = new MedianetView(["documents" => $lastDocuments,"next"=>$next,"return"=>$return]);
             $vue->render("catalogue");
 
         }
@@ -90,7 +108,7 @@ class MedianetController extends \mf\control\AbstractController
                         ->orWhere('description', 'like','%'.$filtredKey.'%');
                 })
                     ->where('id_Type', '=',$idType)->where('id_Kind','=',$idKind)->get();
-                $view = new MedianetView($documents);
+                $view = new MedianetView(["documents" => $documents,"search" => true]);
                 $view->render("catalogue");
             }
         }

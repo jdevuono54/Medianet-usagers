@@ -56,10 +56,21 @@ EQT;
         return "Copyright@2019";
     }
     private function renderCatalogue(){
-        $documents = $this->data;
+        $documents = $this->data["documents"];
         $httpRequet = new HttpRequest();
         $src = $httpRequet->root;
         $blocsDocuments="";
+        $btn_suivant="";
+        $btn_retour="";
+
+        if(!isset($this->data["search"]) || $this->data["search"] == false){
+            if(isset($this->data["next"]) && $this->data["next"]== true){
+                $btn_suivant = "<a href='".$src."/main.php/catalogue?page=".$this->data["next"]."'>Suivant</a>";
+            }
+            if(isset($this->data["return"]) && $this->data["return"]== true){
+                $btn_retour = "<a href='".$src."/main.php/catalogue?page=".$this->data["return"]."'>Retour</a>";
+            }
+        }
 
         foreach ($documents as $document){
 
@@ -80,6 +91,10 @@ EQT;
                 <h1>Catalogue</h1>
             </div>
                 ${blocsDocuments}
+            <div class="pagination">
+                ${btn_retour}
+                ${btn_suivant}
+            </div>
 </div>
 EQT;
         return $html;
