@@ -5,19 +5,16 @@
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 1.6%; }
     #articleDoc #titreDoc {
-      grid-column: 1/7;
+      grid-column: 3/5;
       margin-top: 5em;
       border: 1px solid black;
       text-align: center;
       background-color: grey; }
     #articleDoc #titre {
-      grid-column: 5/6;
       text-decoration: underline;
       font-size: larger; }
     #articleDoc #sectionImg {
-      grid-column: 1/3;
-      margin-top: 5em;
-      margin-left: 1em; }
+      grid-column: 2/3; }
     #articleDoc #detailDoc {
       grid-column: 3/7;
       margin-top: 5em; }
@@ -29,91 +26,50 @@
       font-size: medium; } }
 /*Tablette*/
 @media (min-width: 450px) and (max-width: 991px) {
-    /*#articleDoc{
-
-      display: grid;
-
-      grid-template-columns: repeat(12,1fr);
-      grid-gap: 1.6%;
-
-
-      #titreDoc{
-
-        grid-column: 4/10;
-        margin-top: 5em;
-        border: 1px solid black;
-        text-align: center;
-        background-color: grey;
-
-
-      }
-      #titre{
-        text-decoration: underline;
-      }
-      #detailDoc{
-        grid-column: 4/13;
-        margin-top: 5em;
-
-      }
-      #sectionImg{
-        margin-top: 5em;
-        grid-column: 1/3;
-
-      }
-      #type{
-        margin-top: 5em;
-      }
-       #imageDoc{
-         grid-column: 1/3;
-      }
-
-
-
-      }
-*/
-  #titreDoc {
-    border: 1px solid black;
-    text-align: center;
-    background-color: grey; }
-
-  #imageDoc {
-    float: left;
-    margin-top: 6.5em;
-    margin-left: 2em; }
-
-  #detailDoc {
+  #articleDoc {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 1.6%;
-    margin-top: 5em; }
-    #detailDoc #titre {
-      grid-column: 2/7;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 1.6%; }
+    #articleDoc #titreDoc {
+      grid-column: 4/10;
+      margin-top: 5em;
+      border: 1px solid black;
+      text-align: center;
+      background-color: grey; }
+    #articleDoc #titre {
       text-decoration: underline; }
-    #detailDoc .description {
-      grid-column: 2/7; }
-    #detailDoc #type, #detailDoc #genre, #detailDoc #dispo {
-      grid-column: 2/7;
-      font-size: small; }
-    #detailDoc #type {
-      margin-top: 5em; } }
+    #articleDoc #detailDoc {
+      grid-column: 4/13;
+      margin-top: 5em; }
+    #articleDoc #sectionImg {
+      margin-top: 5em;
+      grid-column: 1/3; }
+    #articleDoc #type {
+      margin-top: 5em; }
+    #articleDoc #imageDoc {
+      grid-column: 1/3; } }
 /*portable*/
 @media (min-width: 0px) and (max-width: 450px) {
   #sectionImg {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: 1.6%; }
-    #sectionImg picture {
-      grid-column: 4/10; }
+    grid-gap: 1.6%;
+  }
+  #sectionImg picture {
+    grid-column: 4/10;
+  }
 
   #titreDoc {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: 1.6%; }
-    #titreDoc h1 {
-      grid-column: 2/12;
-      border: 1px solid black;
-      text-align: center;
-      background-color: grey; }
+    grid-gap: 1.6%;
+  }
+  #titreDoc h1 {
+    grid-column: 2/12;
+    border: 1px solid black;
+    text-align: center;
+    background-color: grey;
+  }
 
   #detailDoc {
     display: grid;
@@ -123,12 +79,137 @@
     #detailDoc #titre {
       grid-column: 1/13;
       text-decoration: underline; }
-    #detailDoc .description {
+    #detailDoc #descriprion {
       grid-column: 1/13; }
     #detailDoc #type, #detailDoc #genre, #detailDoc #dispo {
       grid-column: 1/13;
       font-size: small; }
     #detailDoc #type {
       margin-top: 2em; } }
+
+  #login_form {
+    border: 1px solid black;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: auto;
+  }
+  #login_form div:not(:last-of-type) {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.6%;
+  }
+  #login_form div:not(:last-of-type) label {
+    grid-column: 1/2;
+  }
+  #login_form div:not(:last-of-type) input {
+    grid-column: 2/3;
+    height: 2em;
+  }
+  #login_form div:last-of-type {
+    padding: 1em;
+  }
+  #login_form div:last-of-type input {
+    grid-column: 1/3;
+    width: 100%;
+  }
+
+  #articleDoc {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 1.6%;
+  }
+  #articleDoc #titreDoc {
+    grid-column: 4/10;
+    margin-top: 5em;
+    border: 1px solid black;
+    text-align: center;
+    background-color: grey;
+  }
+  #articleDoc #titre {
+    text-decoration: underline;
+  }
+  #articleDoc #detailDoc {
+    grid-column: 4/13;
+    margin-top: 5em;
+  }
+  #articleDoc #sectionImg {
+    margin-top: 5em;
+    grid-column: 1/3;
+  }
+  #articleDoc #type {
+    margin-top: 5em;
+  }
+  #articleDoc #imageDoc {
+    grid-column: 1/3;
+  }
+}
+@media (min-width: 992px) {
+  .catalogue {
+    display: grid;
+    width: 60%;
+    margin-left: 20%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.6%;
+  }
+
+  #login_form {
+    border: 1px solid black;
+    width: 30%;
+    margin-left: 40%;
+    margin-right: auto;
+  }
+  #login_form div:not(:last-of-type) {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.6%;
+  }
+  #login_form div:not(:last-of-type) label {
+    grid-column: 1/2;
+  }
+  #login_form div:not(:last-of-type) input {
+    grid-column: 2/3;
+  }
+  #login_form div:last-of-type {
+    padding: 1em;
+  }
+  #login_form div:last-of-type input {
+    grid-column: 1/3;
+    width: 100%;
+  }
+
+  #articleDoc {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1.6%;
+  }
+  #articleDoc #titreDoc {
+    grid-column: 3/5;
+    margin-top: 5em;
+    border: 1px solid black;
+    text-align: center;
+    background-color: grey;
+  }
+  #articleDoc #titre {
+    text-decoration: underline;
+    font-size: larger;
+  }
+  #articleDoc #sectionImg {
+    grid-column: 2/3;
+  }
+  #articleDoc #detailDoc {
+    grid-column: 3/7;
+    margin-top: 5em;
+  }
+  #articleDoc #type {
+    margin-top: 5em;
+    font-size: medium;
+  }
+  #articleDoc #genre, #articleDoc #dispo {
+    margin-top: 0.5em;
+    font-size: medium;
+  }
+}
 
 /*# sourceMappingURL=G_cssGrid.css.map */
