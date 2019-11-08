@@ -159,17 +159,17 @@ class MedianetController extends \mf\control\AbstractController
     }
 
     public function viewSignupRequest(){
-        if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER) {
+        if(!isset($_SESSION['access_level'])) {
             $view = new MedianetView(null);
             $view->render("signup_request");
         }
         else{
-            Router::executeRoute("login");
+            Router::executeRoute("catalogue");
         }
     }
 
     public function addSignupRequest(){
-        if(isset($_SESSION['access_level']) && $_SESSION['access_level'] === MedianetAuthentification::ACCESS_LEVEL_USER) {
+        if(!isset($_SESSION['access_level'])) {
             if (isset($_REQUEST['txtName']) && isset($_REQUEST['txtMail']) && isset($_REQUEST['txtPassword1'])
                 && isset($_REQUEST['txtPassword2']) && isset($_REQUEST['txtPhone'])) {
 
@@ -200,7 +200,7 @@ class MedianetController extends \mf\control\AbstractController
             }
         }
         else{
-            Router::executeRoute("login");
+            Router::executeRoute("catalogue");
         }
     }
 

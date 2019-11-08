@@ -43,15 +43,20 @@ EQT;
     <a href="$logout">
         <img src="${src}/html/img/icons/profil.png" alt="profil">
     </a>
-    <a href="$checkSignup">
-        <img src="${src}/html/img/icons/signup.png" alt="signupCheck">
-    </a>
     <a href="$logout">
         <img src="${src}/html/img/icons/exit.png" alt="logout">
     </a>
 </nav>
 EQT;
-}
+        }else{
+            $header .= <<<EQT
+<nav>
+    <a href="$checkSignup">
+        <img src="${src}/html/img/icons/signup.png" alt="signupCheck">
+    </a>
+</nav>
+EQT;
+        }
 
 
         return $header;
