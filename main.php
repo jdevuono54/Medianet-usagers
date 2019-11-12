@@ -35,6 +35,8 @@ $router->addRoute("check_login","/check_login","medianetapp\control\MedianetCont
 $router->addRoute("document","/document","medianetapp\control\MedianetController","viewDocument",null);
 $router->addRoute("signup_request","/signup_request","medianetapp\control\MedianetController","viewSignupRequest",null);
 $router->addRoute("add_signup_request","/add_signup_request","medianetapp\control\MedianetController","addSignupRequest",null);
+$router->addRoute('user', '/user', '\medianetapp\control\MedianetController', 'viewUser',null);
+$router->addRoute('update_profil', '/update_profil', '\medianetapp\control\MedianetController', 'updateProfil',null);
 
 $router->setDefaultRoute('/login');
 /*Route : Search*/

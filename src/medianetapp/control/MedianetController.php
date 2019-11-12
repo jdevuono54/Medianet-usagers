@@ -208,5 +208,50 @@ class MedianetController extends \mf\control\AbstractController
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
+    public function viewUser(){
+             if(isset($_SESSION["user_login"])){
+        $user = User::where("mail","=",$_SESSION["user_login"])->first();
 
-}
+        if($user != null){
+            $vue = new MedianetView($user);
+            $vue->render("user");
+        }
+    }
+
+    else{
+      $vue = new MedianetView(null);
+      $vue->render("login");
+    }
+    }
+
+
+    public function updateProfil(){
+
+      if(isset($_REQUEST['txtName']) && isset($_REQUEST['txtMail']) && isset($_REQUEST['txtPhone'])) {
+
+          /*Valeurs filtrés*/
+          $name = strip_tags(trim($_REQUEST['txtName']));
+          $mail = strip_tags(trim($_REQUEST['txtMail']));
+          $phone = strip_tags(trim($_REQUEST['txtPhone']));
+
+          $user= User::where("mail","=",$_SESSION["user_login"])->first();
+
+          if(User::where('mail','=',$mail)->where('mail','<>',$_SESSION["user_login"])->first()!=$mail){
+             $user->name=$name;
+             $user->mail=$mail;
+             $user->phone=$phone;
+             $user->save();
+             $vue = new MedianetView($user);
+             $vue->render("user");
+          }
+          else{
+                 echo "Mail existe deja !!";
+          }
+
+
+
+
+        }
+
+      }
+    }
