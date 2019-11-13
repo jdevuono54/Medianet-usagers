@@ -358,6 +358,12 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1.6%;
   }
+  .catalogue .document:nth-of-type(2n) {
+    grid-column: 1/2;
+  }
+  .catalogue .pagination {
+    grid-column: 1/3;
+  }
 
   #login_form {
     border: 1px solid black;
